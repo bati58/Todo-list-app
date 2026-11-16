@@ -66,13 +66,4 @@ Building this project helped me practice:
 - Managing application state.
 - Responsive web design.
 
-## Author
-
-**Bati Jano**
-
-- GitHub: [@bati58](https://github.com/bati58)
-- LinkedIn: [Bati Jano](https://linkedin.com/in/bati-jano/)
-
----
-
 Built as a practical project while learning JavaScript and frontend web development.
