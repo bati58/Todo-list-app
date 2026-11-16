@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="A simple personal to-do list app to organize and manage daily tasks.">
+
+    <title>My To-Do List | Task Manager</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <main class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <span class="eyebrow">MY DAILY PLANNER</span>
+
+                <h1>My To-Do List<span>.</span></h1>
+
+                <p>Keep track of what you need to get done.</p>
+            </div>
+
+            <div class="header-icon" aria-hidden="true">
+                <img src="icons/check.png" alt="" class="Task completed">
+            </div>
+        </header>
+
+
+        <!-- Statistics -->
+        <section class="stats" aria-label="Task statistics">
+
+            <div class="stat-card">
+                <span class="stat-label">Total Tasks</span>
+                <h2 id="totalTasks">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Active</span>
+                <h2 id="activeTasks">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Completed</span>
+                <h2 id="completedTasks">0</h2>
+            </div>
+
+        </section>
+
+
+        <!-- Progress -->
+        <section class="progress-section" aria-label="Overall progress">
+
+            <div class="progress-info">
+                <span>Overall Progress</span>
+                <span id="progressText">0%</span>
+            </div>
+
+            <div
+                class="progress-track"
+                role="progressbar"
+                aria-label="Task completion progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                id="progressTrack"
+            >
+                <div id="progressBar"></div>
+            </div>
+
+        </section>
+
+
+        <!-- Tasks -->
+        <section class="task-section">
+
+            <h2>Tasks</h2>
+
+
+            <!-- Add Task -->
+            <form id="taskForm" class="task-form">
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="Add a task..."
+                    maxlength="150"
+                    autocomplete="off"
+                    aria-label="New task"
+                    required
+                >
+
+                <button type="submit" class="add-button">
+                    <span aria-hidden="true">+</span>
+                    Add Task
+                </button>
+
+            </form>
+
+
+            <!-- Search -->
+            <div class="search-box">
+
+                <img src="icons/search.png" alt="" class="search-icon">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Find a task..."
+                    aria-label="Search tasks"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- Filters -->
+            <div class="filter-section">
+
+                <div class="filters" aria-label="Filter tasks">
+
+                    <button
+                        type="button"
+                        class="filter-btn active"
+                        data-filter="all"
+                        aria-pressed="true"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-btn"
+                        data-filter="active"
+                        aria-pressed="false"
+                    >
+                        Active
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-btn"
+                        data-filter="completed"
+                        aria-pressed="false"
+                    >
+                        Completed
+                    </button>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="clearCompleted"
+                    class="clear-button"
+                >
+                    Clear completed
+                </button>
+
+            </div>
+
+
+            <!-- Task List -->
+            <ul
+                id="taskList"
+                class="task-list"
+                aria-label="Your tasks"
+            ></ul>
+
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state">
+
+                <div class="empty-icon" aria-hidden="true">
+                    <img src="icons/empty.png" alt="">
+                </div>
+
+                <h3>Nothing here yet</h3>
+
+                <p>Your tasks will appear here.</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made to keep things simple.</p>
+        </footer>
+
+    </main>
+
+
+    <!-- Confirmation Modal -->
+    <div
+        class="modal-overlay"
+        id="confirmModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalMessage"
+        aria-hidden="true"
+    >
+
+        <div class="modal">
+
+            <div class="modal-icon" aria-hidden="true">
+                !
+            </div>
+
+            <h2 id="modalTitle">Are you sure?</h2>
+
+            <p id="modalMessage">
+                This action cannot be undone.
+            </p>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelModal"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="confirm-btn"
+                    id="confirmAction"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

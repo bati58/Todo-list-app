@@ -1,0 +1,747 @@
+
+/*  1. GLOBAL STYLES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #10111a;
+    --container: #191b28;
+    --surface: #222536;
+    --surface-hover: #292d40;
+
+    --border: #303348;
+    --border-light: #373a50;
+
+    --text: #f1f1f5;
+    --text-muted: #999caf;
+
+    --primary: #8b5cf6;
+    --primary-hover: #7544df;
+    --primary-light: #c5adff;
+
+    --danger: #dc3545;
+    --danger-light: #ffaaaa;
+
+    --success: #287a55;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 3px;
+}
+
+
+/* 2. MAIN CONTAINER */
+
+.app-container {
+    width: 100%;
+    max-width: 850px;
+
+    margin: auto;
+    padding: 35px;
+
+    background: var(--container);
+    border: 1px solid #292c3e;
+    border-radius: 18px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+
+/*   3. HEADER */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    color: #a78bfa;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.header h1 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.header h1 span {
+    color: var(--primary-light);
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Header icon image */
+.header-icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+
+/* 4. STATISTICS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.stat-card h2 {
+    font-size: 28px;
+    margin-top: 12px;
+}
+
+
+/* 5. PROGRESS BAR */
+
+.progress-section {
+    margin-bottom: 35px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    color: #b9bbcb;
+    font-size: 13px;
+
+    margin-bottom: 12px;
+}
+
+#progressText {
+    color: var(--primary-light);
+    font-weight: bold;
+}
+
+.progress-track {
+    height: 8px;
+
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#progressBar {
+    width: 0%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        #c084fc
+    );
+
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+
+/* 6. TASK SECTION */
+
+.task-section > h2 {
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+
+/* Add Task Form */
+
+.task-form {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.task-form input {
+    flex: 1;
+    min-width: 0;
+
+    padding: 14px;
+
+    border-radius: 9px;
+    border: 1px solid var(--border-light);
+
+    background: var(--surface);
+    color: white;
+
+    outline: none;
+}
+
+.task-form input:focus {
+    border-color: #9b7af7;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: var(--primary);
+    color: white;
+
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.add-button:hover {
+    background: var(--primary-hover);
+}
+
+.add-button span {
+    font-size: 20px;
+}
+
+
+/*   7. SEARCH */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+
+    padding: 0 14px;
+    border-radius: 9px;
+
+    margin-bottom: 20px;
+}
+
+/* Search icon image */
+.search-icon {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.search-box input {
+    width: 100%;
+
+    padding: 13px 0;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: white;
+}
+
+.search-box input:focus-visible {
+    outline: none;
+}
+
+/*   8. FILTERS */
+
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-light);
+
+    color: #a9aabc;
+
+    padding: 8px 14px;
+    border-radius: 7px;
+
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.filter-btn:hover {
+    color: white;
+}
+
+.filter-btn.active {
+    background: #30264b;
+    border-color: var(--primary);
+
+    color: var(--primary-light);
+}
+
+.clear-button {
+    background: transparent;
+    border: none;
+
+    color: #f18b8b;
+    font-size: 12px;
+
+    transition: 0.2s;
+}
+
+.clear-button:hover {
+    color: #ff5555;
+}
+
+
+/*   9. TASK LIST */
+
+.task-list {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+
+    padding: 15px;
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+.task-item:hover {
+    border-color: #7560a9;
+}
+
+.task-text {
+    flex: 1;
+    min-width: 0;
+
+    overflow-wrap: anywhere;
+    font-size: 14px;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #777b91;
+}
+
+
+/* Complete Button */
+
+.complete-btn {
+    width: 21px;
+    height: 21px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    border: 2px solid #777b91;
+
+    background: transparent;
+    color: white;
+
+    font-size: 12px;
+}
+
+.completed .complete-btn {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+
+/* Task Actions */
+
+.task-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.action-btn {
+    border: none;
+    padding: 7px 10px;
+
+    border-radius: 6px;
+    font-size: 12px;
+
+    color: white;
+    transition: 0.2s;
+}
+
+.edit-btn {
+    background: #343b57;
+}
+
+.edit-btn:hover {
+    background: #465477;
+}
+
+.delete-btn {
+    background: #572d3a;
+    color: var(--danger-light);
+}
+
+.delete-btn:hover {
+    background: #87394c;
+}
+
+
+/* 10. INLINE EDITING */
+
+.edit-form {
+    flex: 1;
+
+    display: flex;
+    gap: 7px;
+
+    min-width: 0;
+}
+
+.edit-input {
+    flex: 1;
+    min-width: 0;
+
+    background: #141624;
+    color: white;
+
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+
+    padding: 8px;
+    outline: none;
+}
+
+.save-btn {
+    background: var(--success);
+}
+
+.save-btn:hover {
+    background: #329467;
+}
+
+.cancel-btn {
+    background: #44485b;
+}
+
+.edit-form .cancel-btn:hover {
+    background: #595e75;
+}
+
+
+/* 11. CONFIRMATION MODAL */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(4px);
+
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    max-width: 400px;
+
+    padding: 28px;
+
+    background: #1e1b2e;
+    border: 1px solid #38334d;
+    border-radius: 16px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+    animation: modalAppear 0.2s ease;
+}
+
+.modal-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 18px;
+
+    border-radius: 50%;
+
+    background: rgba(220, 53, 69, 0.15);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+
+    color: #ff737e;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.modal h2 {
+    color: white;
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+.modal p {
+    color: #aaa5ba;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-actions button {
+    padding: 10px 16px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.modal-actions .cancel-btn {
+    background: #343047;
+    color: white;
+}
+
+.modal-actions .cancel-btn:hover {
+    background: #45405b;
+}
+
+.modal-actions .confirm-btn {
+    background: var(--danger);
+    color: white;
+}
+
+.modal-actions .confirm-btn:hover {
+    background: #bb2d3b;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 12. EMPTY STATE */
+
+.empty-state {
+    text-align: center;
+    padding: 45px 15px;
+
+    color: var(--text-muted);
+}
+
+/* Empty state icon image */
+.empty-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.empty-state h3 {
+    color: #e2e2ed;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    font-size: 13px;
+}
+
+
+/* 13. FOOTER */
+
+.footer {
+    text-align: center;
+
+    margin-top: 35px;
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border);
+
+    color: #777b91;
+    font-size: 12px;
+}
+
+
+/* 14. RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px 10px;
+    }
+
+    .app-container {
+        padding: 20px 15px;
+    }
+
+    .header h1 {
+        font-size: 29px;
+    }
+
+    .header-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 23px;
+    }
+
+    .stats {
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 13px 9px;
+    }
+
+    .stat-card h2 {
+        font-size: 23px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    .task-form {
+        flex-direction: column;
+    }
+
+    .task-form input,
+    .add-button {
+        min-height: 45px;
+    }
+
+    .filter-section {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .filters {
+        width: 100%;
+    }
+
+    .filter-btn {
+        flex: 1;
+    }
+
+    .task-item {
+        flex-wrap: wrap;
+    }
+
+    .task-actions {
+        margin-left: auto;
+    }
+
+    .edit-form {
+        flex-wrap: wrap;
+    }
+
+    .edit-input {
+        flex-basis: 100%;
+    }
+
+    .modal {
+        padding: 22px;
+    }
+
+    .modal-actions button {
+        flex: 1;
+    }
+}
+
+
+/* 15. REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
