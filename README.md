@@ -47,8 +47,8 @@ todo-list/
 ├── index.html
 ├── style.css
 ├── script.js
-├── favicon.png
 └── icons/
+    |── favicon.png
     ├── check.png
     ├── search.png
     └── empty.png
