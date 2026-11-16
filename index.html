@@ -6,14 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="A simple personal to-do list app to organize and manage daily tasks.">
+    <meta
+        name="description"
+        content="A simple personal to-do list app to organize and manage daily tasks."
+    >
+
+    <meta name="theme-color" content="#10111a">
 
     <title>My To-Do List | Task Manager</title>
 
+<<<<<<< HEAD
     <link rel="icon" type="image/png" href="icons/favicon.png">
+=======
+    <link rel="icon" type="image/png" href="/icons/favicon.png">
+>>>>>>> 0631da3 (Refactor todo app files and improve functionality)
     <link rel="stylesheet" href="style.css">
 
-    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -22,6 +30,7 @@
 
         <!-- Header -->
         <header class="header">
+
             <div class="header-content">
                 <span class="eyebrow">MY DAILY PLANNER</span>
 
@@ -31,8 +40,9 @@
             </div>
 
             <div class="header-icon" aria-hidden="true">
-                <img src="icons/check.png" alt="" class="Task completed">
+                <img src="icons/check.png" alt="">
             </div>
+
         </header>
 
 
@@ -41,38 +51,38 @@
 
             <div class="stat-card">
                 <span class="stat-label">Total Tasks</span>
-                <h2 id="totalTasks">0</h2>
+                <h2 id="totalTasks" aria-live="polite" aria-atomic="true">0</h2>
             </div>
 
             <div class="stat-card">
                 <span class="stat-label">Active</span>
-                <h2 id="activeTasks">0</h2>
+                <h2 id="activeTasks" aria-live="polite" aria-atomic="true">0</h2>
             </div>
 
             <div class="stat-card">
                 <span class="stat-label">Completed</span>
-                <h2 id="completedTasks">0</h2>
+                <h2 id="completedTasks" aria-live="polite" aria-atomic="true">0</h2>
             </div>
 
         </section>
 
 
-        <!-- Progress -->
+        <!-- Overall Progress -->
         <section class="progress-section" aria-label="Overall progress">
 
             <div class="progress-info">
                 <span>Overall Progress</span>
-                <span id="progressText">0%</span>
+                <span id="progressText" aria-live="polite">0%</span>
             </div>
 
             <div
                 class="progress-track"
+                id="progressTrack"
                 role="progressbar"
                 aria-label="Task completion progress"
                 aria-valuemin="0"
                 aria-valuemax="100"
                 aria-valuenow="0"
-                id="progressTrack"
             >
                 <div id="progressBar"></div>
             </div>
@@ -110,7 +120,12 @@
             <!-- Search -->
             <div class="search-box">
 
-                <img src="icons/search.png" alt="" class="search-icon">
+                <img
+                    src="icons/search.png"
+                    alt=""
+                    class="search-icon"
+                    aria-hidden="true"
+                >
 
                 <input
                     type="search"
@@ -126,7 +141,7 @@
             <!-- Filters -->
             <div class="filter-section">
 
-                <div class="filters" aria-label="Filter tasks">
+                <div class="filters" role="group" aria-label="Filter tasks">
 
                     <button
                         type="button"
@@ -213,9 +228,7 @@
 
         <div class="modal">
 
-            <div class="modal-icon" aria-hidden="true">
-                !
-            </div>
+            <div class="modal-icon" aria-hidden="true">!</div>
 
             <h2 id="modalTitle">Are you sure?</h2>
 
@@ -246,6 +259,8 @@
         </div>
 
     </div>
+    // external Javascript
+    <script src="script.js" defer></script>
 
 </body>
 </html>

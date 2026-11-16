@@ -8,34 +8,44 @@
 }
 
 :root {
+    /* Backgrounds */
     --background: #10111a;
     --container: #191b28;
     --surface: #222536;
     --surface-hover: #292d40;
 
+    /* Borders */
     --border: #303348;
     --border-light: #373a50;
 
+    /* Text */
     --text: #f1f1f5;
     --text-muted: #999caf;
 
+    /* Primary */
     --primary: #8b5cf6;
     --primary-hover: #7544df;
     --primary-light: #c5adff;
 
+    /* Status */
     --danger: #dc3545;
     --danger-light: #ffaaaa;
-
     --success: #287a55;
+
+    /* Accent colors */
+    --total-color: #60a5fa;
+    --active-color: #fbbf24;
+    --completed-color: #34d399;
+    --progress-color: #a78bfa;
 }
 
 body {
+    min-height: 100vh;
+    padding: 40px 20px;
+
     font-family: Arial, Helvetica, sans-serif;
     background: var(--background);
     color: var(--text);
-
-    min-height: 100vh;
-    padding: 40px 20px;
 }
 
 button,
@@ -54,7 +64,7 @@ input:focus-visible {
 }
 
 
-/* 2. MAIN CONTAINER */
+/*  2. MAIN CONTAINER */
 
 .app-container {
     width: 100%;
@@ -77,20 +87,25 @@ input:focus-visible {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 
     margin-bottom: 30px;
+}
+
+.header-content {
+    min-width: 0;
 }
 
 .eyebrow {
     color: #a78bfa;
     font-size: 11px;
-    letter-spacing: 2px;
     font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .header h1 {
-    font-size: 36px;
     margin: 10px 0;
+    font-size: 36px;
 }
 
 .header h1 span {
@@ -102,8 +117,12 @@ input:focus-visible {
     font-size: 14px;
 }
 
-/* Header icon image */
+.header-icon {
+    flex-shrink: 0;
+}
+
 .header-icon img {
+    display: block;
     width: 30px;
     height: 30px;
     object-fit: contain;
@@ -121,25 +140,37 @@ input:focus-visible {
 }
 
 .stat-card {
+    padding: 20px;
+
     background: var(--surface);
     border: 1px solid var(--border);
-
-    padding: 20px;
     border-radius: 12px;
 }
 
 .stat-label {
-    color: var(--text-muted);
     font-size: 13px;
+    font-weight: 600;
+}
+
+.stat-card:nth-child(1) .stat-label {
+    color: var(--total-color);
+}
+
+.stat-card:nth-child(2) .stat-label {
+    color: var(--active-color);
+}
+
+.stat-card:nth-child(3) .stat-label {
+    color: var(--completed-color);
 }
 
 .stat-card h2 {
-    font-size: 28px;
     margin-top: 12px;
+    font-size: 28px;
 }
 
 
-/* 5. PROGRESS BAR */
+/*  5. PROGRESS BAR */
 
 .progress-section {
     margin-bottom: 35px;
@@ -148,11 +179,15 @@ input:focus-visible {
 .progress-info {
     display: flex;
     justify-content: space-between;
-
-    color: #b9bbcb;
-    font-size: 13px;
+    align-items: center;
 
     margin-bottom: 12px;
+    font-size: 13px;
+}
+
+.progress-info > span:first-child {
+    color: var(--progress-color);
+    font-weight: 600;
 }
 
 #progressText {
@@ -163,9 +198,10 @@ input:focus-visible {
 .progress-track {
     height: 8px;
 
+    overflow: hidden;
+
     background: var(--border);
     border-radius: 20px;
-    overflow: hidden;
 }
 
 #progressBar {
@@ -183,11 +219,11 @@ input:focus-visible {
 }
 
 
-/* 6. TASK SECTION */
+/*  6. TASK SECTION */
 
 .task-section > h2 {
-    font-size: 21px;
     margin-bottom: 18px;
+    font-size: 21px;
 }
 
 
@@ -203,20 +239,24 @@ input:focus-visible {
 .task-form input {
     flex: 1;
     min-width: 0;
-
     padding: 14px;
-
-    border-radius: 9px;
-    border: 1px solid var(--border-light);
 
     background: var(--surface);
     color: white;
+
+    border: 1px solid var(--border-light);
+    border-radius: 9px;
 
     outline: none;
 }
 
 .task-form input:focus {
-    border-color: #9b7af7;
+    border-color: var(--primary);
+}
+
+.task-form input::placeholder,
+.search-box input::placeholder {
+    color: #85899e;
 }
 
 .add-button {
@@ -227,14 +267,14 @@ input:focus-visible {
 
     padding: 0 20px;
 
-    border: none;
-    border-radius: 9px;
-
     background: var(--primary);
     color: white;
 
+    border: none;
+    border-radius: 9px;
+
     font-weight: bold;
-    transition: 0.2s;
+    transition: background 0.2s ease;
 }
 
 .add-button:hover {
@@ -246,47 +286,54 @@ input:focus-visible {
 }
 
 
-/*   7. SEARCH */
+/* 7. SEARCH */
 
 .search-box {
     display: flex;
     align-items: center;
     gap: 10px;
 
+    margin-bottom: 20px;
+    padding: 0 14px;
+
     background: var(--surface);
     border: 1px solid var(--border-light);
-
-    padding: 0 14px;
     border-radius: 9px;
 
-    margin-bottom: 20px;
+    transition: border-color 0.2s ease;
 }
 
-/* Search icon image */
+.search-box:focus-within {
+    border-color: var(--primary);
+}
+
 .search-icon {
+    flex-shrink: 0;
+
     width: 21px;
     height: 21px;
+
     object-fit: contain;
-    flex-shrink: 0;
 }
 
 .search-box input {
     width: 100%;
-
+    min-width: 0;
     padding: 13px 0;
 
     background: transparent;
+    color: white;
+
     border: none;
     outline: none;
-
-    color: white;
 }
 
 .search-box input:focus-visible {
     outline: none;
 }
 
-/*   8. FILTERS */
+
+/*  8. FILTERS */
 
 .filter-section {
     display: flex;
@@ -303,37 +350,61 @@ input:focus-visible {
 }
 
 .filter-btn {
-    background: transparent;
-    border: 1px solid var(--border-light);
+    padding: 8px 14px;
 
+    background: transparent;
     color: #a9aabc;
 
-    padding: 8px 14px;
+    border: 1px solid var(--border-light);
     border-radius: 7px;
 
     font-size: 12px;
-    transition: 0.2s;
+    transition: background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
 }
 
 .filter-btn:hover {
     color: white;
+    background: var(--surface-hover);
 }
 
-.filter-btn.active {
-    background: #30264b;
-    border-color: var(--primary);
+/* All filter */
 
-    color: var(--primary-light);
+.filter-btn[data-filter="all"].active {
+    background: rgba(96, 165, 250, 0.12);
+    border-color: var(--total-color);
+    color: var(--total-color);
 }
+
+/* Active filter */
+
+.filter-btn[data-filter="active"].active {
+    background: rgba(251, 191, 36, 0.12);
+    border-color: var(--active-color);
+    color: var(--active-color);
+}
+
+/* Completed filter */
+
+.filter-btn[data-filter="completed"].active {
+    background: rgba(52, 211, 153, 0.12);
+    border-color: var(--completed-color);
+    color: var(--completed-color);
+}
+
+/* Clear completed */
 
 .clear-button {
-    background: transparent;
-    border: none;
+    padding: 5px 0;
 
+    background: transparent;
     color: #f18b8b;
+
+    border: none;
     font-size: 12px;
 
-    transition: 0.2s;
+    transition: color 0.2s ease;
 }
 
 .clear-button:hover {
@@ -341,14 +412,14 @@ input:focus-visible {
 }
 
 
-/*   9. TASK LIST */
+/* 9. TASK LIST */
 
 .task-list {
-    list-style: none;
-
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    list-style: none;
 }
 
 .task-item {
@@ -356,13 +427,13 @@ input:focus-visible {
     align-items: center;
     gap: 12px;
 
+    padding: 15px;
+
     background: var(--surface);
     border: 1px solid var(--border);
-
-    padding: 15px;
     border-radius: 10px;
 
-    transition: 0.2s;
+    transition: border-color 0.2s ease;
 }
 
 .task-item:hover {
@@ -378,29 +449,31 @@ input:focus-visible {
 }
 
 .task-item.completed .task-text {
-    text-decoration: line-through;
     color: #777b91;
+    text-decoration: line-through;
 }
 
 
 /* Complete Button */
 
 .complete-btn {
-    width: 21px;
-    height: 21px;
-
+    display: grid;
+    place-items: center;
     flex-shrink: 0;
 
-    border-radius: 50%;
-    border: 2px solid #777b91;
+    width: 21px;
+    height: 21px;
 
     background: transparent;
     color: white;
 
+    border: 2px solid #777b91;
+    border-radius: 50%;
+
     font-size: 12px;
 }
 
-.completed .complete-btn {
+.task-item.completed .complete-btn {
     background: var(--primary);
     border-color: var(--primary);
 }
@@ -414,14 +487,14 @@ input:focus-visible {
 }
 
 .action-btn {
-    border: none;
     padding: 7px 10px;
 
-    border-radius: 6px;
-    font-size: 12px;
-
     color: white;
-    transition: 0.2s;
+    border: none;
+    border-radius: 6px;
+
+    font-size: 12px;
+    transition: background 0.2s ease;
 }
 
 .edit-btn {
@@ -445,9 +518,8 @@ input:focus-visible {
 /* 10. INLINE EDITING */
 
 .edit-form {
-    flex: 1;
-
     display: flex;
+    flex: 1;
     gap: 7px;
 
     min-width: 0;
@@ -456,6 +528,7 @@ input:focus-visible {
 .edit-input {
     flex: 1;
     min-width: 0;
+    padding: 8px;
 
     background: #141624;
     color: white;
@@ -463,7 +536,6 @@ input:focus-visible {
     border: 1px solid var(--primary);
     border-radius: 6px;
 
-    padding: 8px;
     outline: none;
 }
 
@@ -489,6 +561,7 @@ input:focus-visible {
 .modal-overlay {
     position: fixed;
     inset: 0;
+    z-index: 1000;
 
     display: none;
     justify-content: center;
@@ -498,8 +571,6 @@ input:focus-visible {
 
     background: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(4px);
-
-    z-index: 1000;
 }
 
 .modal-overlay.active {
@@ -509,7 +580,6 @@ input:focus-visible {
 .modal {
     width: 100%;
     max-width: 400px;
-
     padding: 28px;
 
     background: #1e1b2e;
@@ -522,39 +592,36 @@ input:focus-visible {
 }
 
 .modal-icon {
-    width: 42px;
-    height: 42px;
-
     display: grid;
     place-items: center;
 
+    width: 42px;
+    height: 42px;
     margin-bottom: 18px;
 
-    border-radius: 50%;
-
     background: rgba(220, 53, 69, 0.15);
-    border: 1px solid rgba(220, 53, 69, 0.3);
-
     color: #ff737e;
+
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 50%;
 
     font-size: 22px;
     font-weight: bold;
 }
 
 .modal h2 {
+    margin-bottom: 10px;
+
     color: white;
     font-size: 20px;
-
-    margin-bottom: 10px;
 }
 
 .modal p {
-    color: #aaa5ba;
+    margin-bottom: 25px;
 
+    color: #aaa5ba;
     font-size: 14px;
     line-height: 1.6;
-
-    margin-bottom: 25px;
 }
 
 .modal-actions {
@@ -572,7 +639,7 @@ input:focus-visible {
     font-size: 14px;
     font-weight: 600;
 
-    transition: 0.2s;
+    transition: background 0.2s ease;
 }
 
 .modal-actions .cancel-btn {
@@ -609,22 +676,22 @@ input:focus-visible {
 /* 12. EMPTY STATE */
 
 .empty-state {
-    text-align: center;
     padding: 45px 15px;
 
     color: var(--text-muted);
+    text-align: center;
 }
 
-/* Empty state icon image */
 .empty-icon img {
     width: 32px;
     height: 32px;
+
     object-fit: contain;
 }
 
 .empty-state h3 {
-    color: #e2e2ed;
     margin-bottom: 8px;
+    color: #e2e2ed;
 }
 
 .empty-state p {
@@ -635,15 +702,14 @@ input:focus-visible {
 /* 13. FOOTER */
 
 .footer {
-    text-align: center;
-
     margin-top: 35px;
     padding-top: 20px;
 
     border-top: 1px solid var(--border);
 
-    color: #777b91;
+    color: #94a3b8;
     font-size: 12px;
+    text-align: center;
 }
 
 
@@ -663,10 +729,9 @@ input:focus-visible {
         font-size: 29px;
     }
 
-    .header-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 23px;
+    .header-icon img {
+        width: 27px;
+        height: 27px;
     }
 
     .stats {
@@ -705,6 +770,7 @@ input:focus-visible {
 
     .filter-btn {
         flex: 1;
+        padding: 8px 10px;
     }
 
     .task-item {
